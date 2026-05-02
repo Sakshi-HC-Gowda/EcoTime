@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b1326;
+    color: #dae2fd;
+    font-family: Inter, sans-serif;
+  }
+
+  input,
+  select,
+  button {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(23, 31, 51, 0.44);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    line-height: 1;
+  }
+
+  .neon-glow-primary {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.24);
+  }
+
+  .neon-text-glow {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 15px rgba(76, 214, 255, 0.3);
+  }
+}
