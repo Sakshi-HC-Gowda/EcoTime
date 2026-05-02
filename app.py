@@ -67,7 +67,7 @@ def current_intensity(region, interval):
 
 def build_forecast(region, interval):
     step = interval_minutes(interval)
-    start = datetime.now(timezone.utc)
+    start = datetime.now()
     points = []
     labels = []
 
@@ -87,11 +87,11 @@ def best_green_window(region, interval):
     labels, points = build_forecast(region, interval)
     best_index = min(range(len(points)), key=points.__getitem__)
     start = labels[best_index]
-    end_time = datetime.now(timezone.utc) + timedelta(minutes=interval_minutes(interval) * (best_index + 2))
+    end_time = datetime.now() + timedelta(minutes=interval_minutes(interval) * (best_index + 2))
     green_energy = max(48, min(96, round(112 - points[best_index] / 2)))
 
     return {
-        "window": f"{start} - {end_time.strftime('%H:%M')} UTC",
+        "window": f"{start} - {end_time.strftime('%H:%M')} ",
         "greenEnergy": green_energy,
         "intensity": points[best_index],
     }
@@ -123,7 +123,7 @@ def carbon():
             "recommendation": recommendation_for(status),
             "carbonSavedToday": round(max(1.2, (190 - intensity) / 22), 1),
             "ecoScore": max(35, min(98, round(110 - intensity / 2))),
-            "updatedAt": datetime.now(timezone.utc).isoformat(),
+            "updatedAt": datetime.now().isoformat(),
         }
     )
 
@@ -179,7 +179,7 @@ def schedule_task():
             "decision": decision,
             "scheduledFor": scheduled_for,
             "message": message,
-            "createdAt": datetime.now(timezone.utc).isoformat(),
+            "createdAt": datetime.now().isoformat(),
         }
     )
 
